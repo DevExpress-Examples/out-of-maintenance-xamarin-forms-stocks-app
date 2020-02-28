@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:SearchPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Stocks.UI.Views"
+    xmlns:converters="clr-namespace:Stocks.UI.Converters"
+    xmlns:viewModels="clr-namespace:Stocks.ViewModels;assembly=Stocks.ViewModels"
+    xmlns:dxg="clr-namespace:DevExpress.XamarinForms.DataGrid;assembly=DevExpress.XamarinForms.Grid"
+    x:Class="Stocks.UI.Views.TickerSearchPage"
+    BackgroundColor="{DynamicResource BackgroundColor}"
+    x:DataType="viewModels:TickerSearchViewModel"
+    RetryButtonCommand="{Binding ReloadContentCommand}">
+
+    <views:SearchPage.ContentView>
+        <dxg:DataGridView
+            ItemsSource="{Binding Content}"
+            RowTapCommand="{Binding SelectSymbolCommand}"
+            IsUpdateLocked="{Binding State, Converter={converters:ObjectComparerConverter Reference={x:Static viewModels:InitializableViewModelState.Loading}}}"
+            IsPullToRefreshEnabled="False"
+            Style="{StaticResource DataGridStyle}">
+            <dxg:DataGridView.Columns>
+                <dxg:TemplateColumn>
+                    <dxg:TemplateColumn.DisplayTemplate>
+                        <DataTemplate x:DataType="dxg:CellData">
+                            <ContentView
+                                Margin="0"
+                                Padding="0"
+                                CompressedLayout.IsHeadless="True">
+                                <views:TickerSearchRow
+                                    BindingContext="{Binding Item}"
+                                    CompressedLayout.IsHeadless="True"/>
+                            </ContentView>
+                        </DataTemplate>
+                    </dxg:TemplateColumn.DisplayTemplate>
+                </dxg:TemplateColumn>
+            </dxg:DataGridView.Columns>
+        </dxg:DataGridView>
+    </views:SearchPage.ContentView>
+</views:SearchPage>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#191b22</color>
+    <color name="colorPrimary">#262933</color>
+    <color name="colorPrimaryDark">#1f222b</color>
+    <color name="colorAccent">#FF7652</color>
+    <color name="textColor">@android:color/white</color>
+    <color name="toolbarIconTint">#a9adb1</color>
+    <color name="btn_positive_button_bar_background_color">@color/colorAccent</color>
+    <color name="btn_negative_button_bar_background_color">#494b55</color>
+</resources>

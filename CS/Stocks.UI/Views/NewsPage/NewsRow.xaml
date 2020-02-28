@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sys="clr-namespace:System;assembly=netstandard"
+    xmlns:views="clr-namespace:Stocks.UI.Views"
+    xmlns:viewModels="clr-namespace:Stocks.ViewModels;assembly=Stocks.ViewModels"
+    x:Class="Stocks.UI.Views.NewsRow"
+    BackgroundColor="Transparent"
+    x:DataType="viewModels:NewsItemViewModel">
+
+    <Grid
+        RowSpacing="0" ColumnSpacing="12" Padding="16, 0"
+        CompressedLayout.IsHeadless="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="0,16,0,0"
+            Text="{Binding Source}"
+            TextColor="{DynamicResource SecondaryTextColor}"
+            FontSize="Caption"/>
+
+        <Label
+            Grid.Row="0"
+            Grid.Column="1"
+            Margin="0,16,0,0"
+            HorizontalOptions="End"
+            Text="{Binding Timestamp}"
+            TextColor="{DynamicResource SecondaryTextColor}"
+            FontSize="Caption"/>
+        
+        <Label
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Margin="0,12,0,0"
+            Text="{Binding Headline}"
+            TextColor="{DynamicResource TextColor}"
+            FontSize="Subtitle"/>
+
+        <views:InlineItemsView
+            ItemsSource="{Binding RelatedTickers}"
+            HorizontalOptions="FillAndExpand"
+            Grid.Row="2"
+            Grid.ColumnSpan="2"
+            HeightRequest="32"
+            Margin="0,16"
+            Orientation="Horizontal"
+            Spacing="12">
+            <views:InlineItemsView.ItemTemplate>
+                <DataTemplate x:DataType="sys:String">
+                    <Frame
+                        BackgroundColor="{DynamicResource ChipsBackground}"
+                        HasShadow="False"
+                        CornerRadius="2"
+                        Padding="12,4">
+                        <Label
+                            Text="{Binding .}"
+                            TextColor="{DynamicResource AccentColor}"
+                            FontSize="Caption"
+                            VerticalOptions="Center"/>
+                    </Frame>
+                </DataTemplate>
+            </views:InlineItemsView.ItemTemplate>
+        </views:InlineItemsView>
+
+        <BoxView
+            Grid.Row="3"
+            Grid.ColumnSpan="2"
+            Color="{DynamicResource SeparatorColor}"/>
+
+    </Grid>
+
+</ContentView>

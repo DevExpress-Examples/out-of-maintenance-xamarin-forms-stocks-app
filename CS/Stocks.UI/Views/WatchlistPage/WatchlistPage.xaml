@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:InitializablePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:views="clr-namespace:Stocks.UI.Views"
+    xmlns:converters="clr-namespace:Stocks.UI.Converters"
+    xmlns:viewModels="clr-namespace:Stocks.ViewModels;assembly=Stocks.ViewModels"
+    xmlns:dxg="clr-namespace:DevExpress.XamarinForms.DataGrid;assembly=DevExpress.XamarinForms.Grid"
+    mc:Ignorable="d"
+    x:Class="Stocks.UI.Views.WatchlistPage"
+    Title="{Binding Title}"
+    BackgroundColor="{DynamicResource BackgroundColor}"
+    x:DataType="viewModels:WatchlistViewModel"
+    ios:Page.UseSafeArea="True"
+    PlaceholderIconSource="empty_watchlist"
+    PlaceholderText="Your watchlist is empty."
+    PlaceholderActionButtonCaption="ADD"
+    PlaceholderActionButtonCommand="{Binding ShowSearchDialogCommand}"
+    RetryButtonCaption="RETRY"
+    RetryButtonCommand="{Binding ReloadContentCommand}">
+
+    <NavigationPage.TitleView>
+        <views:TitleView
+            TitleText="{Binding Title}"
+            ShowMenuItem="True"
+            MenuIconSource="menu.svg">
+            <views:TitleView.EndItems>
+                <views:BarIconItem IconSource="add.svg" Command="{Binding ShowSearchDialogCommand}"/>
+                <views:BarIconItem IconSource="sorting.svg" Clicked="OnSortClicked"/>
+            </views:TitleView.EndItems>
+        </views:TitleView>
+    </NavigationPage.TitleView>
+
+    <views:InitializablePage.ContentView>
+        <dxg:DataGridView
+            IsVisible="{Binding State, Converter={converters:InitializableViewModelStateToContentVisibilityConverter}}"
+            FullSwipeMode="None"
+            ItemsSource="{Binding Content}"
+            RowTapCommand="{Binding SelectItemCommand}"
+            IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+            IsUpdateLocked="{Binding State, Converter={converters:ObjectComparerConverter Reference={x:Static viewModels:InitializableViewModelState.Loading}}}"
+            PullToRefreshCommand="{Binding ReloadContentCommand}"
+            AllowCascadeTreeCreation="False"
+            Style="{StaticResource DataGridStyle}">
+            <dxg:DataGridView.EndSwipeItems>
+                <dxg:SwipeItem Width="95" Command="{Binding RemoveTickerCommand}">
+                    <dxg:SwipeItem.Template>
+                        <DataTemplate> 
+                            <views:DeleteSwipeButton />
+                        </DataTemplate>
+                    </dxg:SwipeItem.Template>
+                </dxg:SwipeItem>
+            </dxg:DataGridView.EndSwipeItems>
+            <dxg:DataGridView.StartSwipeItems>
+                <dxg:SwipeItem Width="113" Command="{Binding AddToPortfolioCommand}">
+                    <dxg:SwipeItem.Template>
+                        <DataTemplate> 
+                            <views:AddToPortfolioSwipeButton />
+                        </DataTemplate>
+                    </dxg:SwipeItem.Template>
+                </dxg:SwipeItem>
+            </dxg:DataGridView.StartSwipeItems>
+            <dxg:DataGridView.Columns>
+                <dxg:TemplateColumn x:Name="contentColumn">
+                    <dxg:TemplateColumn.DisplayTemplate>
+                        <DataTemplate x:DataType="dxg:CellData">
+                            <ContentView Style="{StaticResource RowWrapper}">
+                                <views:SymbolRow
+                                    BindingContext="{Binding Item}"
+                                    CompressedLayout.IsHeadless="True"
+                                    Style="{StaticResource ValueDifferenceViewStyle}"/>
+                            </ContentView>
+                        </DataTemplate>
+                    </dxg:TemplateColumn.DisplayTemplate>
+                </dxg:TemplateColumn>
+            </dxg:DataGridView.Columns>
+        </dxg:DataGridView>
+    </views:InitializablePage.ContentView>
+</views:InitializablePage>

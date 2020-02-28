@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.Editors;assembly=DevExpress.XamarinForms.DemoEditors"
+    xmlns:views="clr-namespace:Stocks.UI.Views"
+    x:Class="Stocks.UI.Themes.TitleViewStyles">
+
+    <Style x:Key="TitleViewContainer" TargetType="RelativeLayout">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="HeightRequest" Value="48"/>
+        <Setter Property="Padding">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="Android" Value="4,0"/>
+                    <On Platform="iOS" Value="0,4"/>
+                </OnPlatform>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="StartBarItemContainer" TargetType="StackLayout">
+        <Setter Property="Padding">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="Thickness" iOS="0" Android="8,0,0,0"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="EndBarItemContainer" TargetType="StackLayout">
+
+    </Style>
+
+    <Style x:Key="NavigationPageTitleLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource TextColor}"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontAttributes">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="FontAttributes" Android="None" iOS="Bold"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Margin">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="Thickness" Android="9,0,0,0" iOS="0"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BarItemStyle-Android" TargetType="views:BarIconItem">
+        <Setter Property="HighlightMode" Value="Fit"/>
+        <Setter Property="PressedBackgroundColor" Value="{DynamicResource NavigationBarBackgroundColor-Highlighted}"/>
+    </Style>
+
+    <Style x:Key="BarItemStyle-iOS" TargetType="views:BarIconItem">
+        <Setter Property="PressedForegroundColor" Value="{DynamicResource SecondaryTextColor}"/>
+    </Style>
+
+    <Style x:Key="BarItemStyle" TargetType="views:BarIconItem">
+        <Style.BasedOn>
+            <OnPlatform x:TypeArguments="Style">
+                <On Platform="Android" Value="{StaticResource BarItemStyle-Android}"/>
+                <On Platform="iOS" Value="{StaticResource BarItemStyle-iOS}"/>
+            </OnPlatform>
+        </Style.BasedOn>
+        <Setter Property="BackgroundColor" Value="{DynamicResource NavigationBarBackgroundColor}"/>
+        <Setter Property="ForegroundColor" Value="{DynamicResource TextColor}"/>
+        <Setter Property="WidthRequest" Value="42"/>
+        <Setter Property="HeightRequest" Value="42"/>
+    </Style>
+
+    <Style x:Key="StartIconStyle" TargetType="dxe:IconView">
+        <Setter Property="WidthRequest" Value="24"/>
+        <Setter Property="HeightRequest" Value="24"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="ForegroundColor" Value="{DynamicResource PrimaryTextColor}"/>
+        <Setter Property="Margin">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="Thickness" Android="12,0,0,0" iOS="9,0,0,0"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TitleViewSearchField" TargetType="dxe:TextEdit">
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="Margin" Value="18,0"/>
+        <Setter Property="Placeholder" Value="Search"/>
+        <Setter Property="CursorColor" Value="{DynamicResource AccentColor}"/>
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}"/>
+        <Setter Property="PlaceholderColor" Value="{DynamicResource SecondaryTextColor}"/>
+    </Style>
+</ResourceDictionary>

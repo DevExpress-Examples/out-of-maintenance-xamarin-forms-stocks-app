@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<views:InitializablePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:views="clr-namespace:Stocks.UI.Views"
+    xmlns:viewModels="clr-namespace:Stocks.ViewModels;assembly=Stocks.ViewModels"
+    mc:Ignorable="d"
+    x:Class="Stocks.UI.Views.MarketNewsPage"
+    Title="{Binding Title}"
+    BackgroundColor="{DynamicResource BackgroundColor}"
+    x:DataType="viewModels:MarketNewsViewModel"
+    ios:Page.UseSafeArea="True"
+    PlaceholderText="Your watchlist and portfolio are empty."
+    PlaceholderIconSource="empty_news"
+    RetryButtonCaption="RETRY"
+    RetryButtonCommand="{Binding ReloadContentCommand}">
+    <NavigationPage.TitleView>
+        <views:TitleView
+            TitleText="{Binding Title}"
+            ShowMenuItem="True"
+            MenuIconSource="menu.svg"/>
+    </NavigationPage.TitleView>
+    <views:InitializablePage.ContentView>
+        <views:NewsList/>
+    </views:InitializablePage.ContentView>
+</views:InitializablePage>

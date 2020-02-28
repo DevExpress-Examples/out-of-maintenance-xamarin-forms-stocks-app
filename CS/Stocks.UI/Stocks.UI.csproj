@@ -1,0 +1,279 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+    
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DevExpress.XamarinForms.Charts" Version="19.2.6" />
+    <PackageReference Include="DevExpress.XamarinForms.DemoEditors" Version="19.2.6" />
+    <PackageReference Include="DevExpress.XamarinForms.Grid" Version="19.2.6" />
+    <PackageReference Include="DevExpress.XamarinForms.Navigation" Version="19.2.6" />
+    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991640" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
+    <PackageReference Include="Unity.Container" Version="5.11.5" />
+    <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.1.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Stocks.ViewModels\Stocks.ViewModels.csproj" />
+    <ProjectReference Include="..\Stocks.Models\Stocks.Models.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utils\" />
+    <Folder Include="Images\" />
+    <Folder Include="Themes\" />
+    <Folder Include="Views\SymbolPage\" />
+    <Folder Include="Views\MarketPage\" />
+    <Folder Include="Views\MainPage\" />
+    <Folder Include="Services\DialogService\" />
+    <Folder Include="Views\SearchSymbolPage\" />
+    <Folder Include="Views\WatchlistPage\" />
+    <Folder Include="Views\Generic\" />
+    <Folder Include="Views\PortfolioPage\" />
+    <Folder Include="Services\Mocks\" />
+    <Folder Include="Views\PortfolioTransactionsPage\" />
+    <Folder Include="Views\PortfolioPage\PortfolioCharts\" />
+    <Folder Include="Services\Repository\" />
+    <Folder Include="Services\LocalStorage\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Views\NewsPage\NewsPage.xaml" />
+    <EmbeddedResource Remove="Views\AddTransactionPage.xaml" />
+    <EmbeddedResource Remove="HistoricalDataControlPanel.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\quote_arrow_down.svg">
+      <LogicalName>quote_arrow_down.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\quote_arrow_up.svg">
+      <LogicalName>quote_arrow_up.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\disclaimer.svg">
+      <LogicalName>disclaimer.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\search.svg">
+      <LogicalName>search.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\delete.svg">
+       <LogicalName>delete.svg</LogicalName>     
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\menu.svg">
+      <LogicalName>menu.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\chart.svg">
+      <LogicalName>chart.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\detail.svg">
+      <LogicalName>detail.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\news.svg">
+      <LogicalName>news.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\market.svg">
+      <LogicalName>market.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\watchlist.svg">
+      <LogicalName>watchlist.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\round_logo.svg">
+      <LogicalName>round_logo.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\market_news.svg">
+      <LogicalName>market_news.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\financial_chart.svg">
+      <LogicalName>financial_chart.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\area_chart.svg">
+      <LogicalName>area_chart.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\close.svg">
+      <LogicalName>close.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\not_changed.svg">
+      <LogicalName>not_changed.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\checkmark.svg">
+      <LogicalName>checkmark.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\portfolio.svg">
+      <LogicalName>portfolio.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\circle.svg">
+      <LogicalName>circle.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\view.svg">
+      <LogicalName>view.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\setUp.svg">
+      <LogicalName>setUp.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\expand_less.svg">
+      <LogicalName>expand_less.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\expand_more.svg">
+      <LogicalName>expand_more.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\pie_chart_portfolio.svg">
+      <LogicalName>pie_chart_portfolio.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\open.svg">
+      <LogicalName>open.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\fullscreen.svg">
+      <LogicalName>fullscreen.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\fullscreen_exit.svg">
+      <LogicalName>fullscreen_exit.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\edit.svg">
+      <LogicalName>edit.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\buy.svg">
+      <LogicalName>buy.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\sell.svg">
+      <LogicalName>sell.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\sorting.svg">
+      <LogicalName>sorting.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\add.svg">
+      <LogicalName>add.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\gainers.svg">
+      <LogicalName>gainers.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\losers.svg">
+      <LogicalName>losers.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\most_active.svg">
+      <LogicalName>most_active.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\manage_transactions.svg">
+      <LogicalName>manage_transactions.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\add_to_portfolio.svg">
+      <LogicalName>add_to_portfolio.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\sell_buy.svg">
+      <LogicalName>sell_buy.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\inWatchlist.svg">
+      <LogicalName>inWatchlist.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\addToWatchlist.svg">
+      <LogicalName>addToWatchlist.svg</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\key-stats.json">
+      <LogicalName>key-stats.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\news.json">
+      <LogicalName>news.json</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\symbols.json">
+      <LogicalName>symbols.json</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Images\quote_arrow_down.svg" />
+    <None Remove="Images\quote_arrow_up.svg" />
+    <None Remove="Images\disclaimer.svg" />
+    <None Remove="Images\search.svg" />
+    <None Remove="Images\delete.svg" />
+    <None Remove="Images\menu.svg" />
+    <None Remove="Images\chart.svg" />
+    <None Remove="Images\detail.svg" />
+    <None Remove="Images\news.svg" />
+    <None Remove="Images\market.svg" />
+    <None Remove="Images\watchlist.svg" />
+    <None Remove="Images\round_logo.svg" />
+    <None Remove="Images\market_news.svg" />
+    <None Remove="Images\financial_chart.svg" />
+    <None Remove="Images\area_chart.svg" />
+    <None Remove="Images\close.svg" />
+    <None Remove="Images\not_changed.svg" />
+    <None Remove="Images\checkmark.svg" />
+    <None Remove="Images\portfolio.svg" />
+    <None Remove="Images\round_logo %28copy%29.svg" />
+    <None Remove="Images\circle.svg" />
+    <None Remove="Images\view.svg" />
+    <None Remove="Images\setUp.svg" />
+    <None Remove="Images\expand_less.svg" />
+    <None Remove="Images\expand_more.svg" />
+    <None Remove="Images\pie_chart_portfolio.svg" />
+    <None Remove="Images\open.svg" />
+    <None Remove="Images\fullscreen.svg" />
+    <None Remove="Images\fullscreen_exit.svg" />
+    <None Remove="Images\edit.svg" />
+    <None Remove="Images\buy.svg" />
+    <None Remove="Images\sell.svg" />
+    <None Remove="Images\sorting.svg" />
+    <None Remove="Images\add.svg" />
+    <None Remove="Images\gainers.svg" />
+    <None Remove="Images\losers.svg" />
+    <None Remove="Images\most_active.svg" />
+    <None Remove="Images\manage_transactions.svg" />
+    <None Remove="Images\add_to_portfolio.svg" />
+    <None Remove="Images\sell_buy.svg" />
+    <None Remove="Images\inWatchlist.svg" />
+    <None Remove="Images\addToWatchlist.svg" />
+    <None Remove="Resources\key-stats.json" />
+    <None Remove="Resources\news.json" />
+    <None Remove="Resources\symbols.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Views\NewsPage\NewsPage.xaml.cs" />
+    <Compile Remove="Views\PortfolioPage.cs" />
+    <Compile Remove="Views\AddTransactionPage.xaml.cs" />
+    <Compile Remove="HistoricalDataControlPanel.xaml.cs" />
+    <Compile Remove="Views\PortfolioPage\PortfolioCharts\PortfolioDonutChartPage %28copy%29.xaml.cs" />
+    <Compile Remove="Views\Generic\DeleteSwipeButton %28copy%29.xaml.cs" />
+    <Compile Remove="Views\Generic\AddToPortfolioSwipeButton %28copy%29.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\MarketPage\SymbolRow.xaml.cs">
+      <DependentUpon>SymbolRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MarketPage\SymbolHeaderCaption.xaml.cs">
+      <DependentUpon>SymbolGroupRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SymbolPage\SymbolInfo.xaml.cs">
+      <DependentUpon>SymbolDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SymbolPage\SymbolInfoItem.xaml.cs">
+      <DependentUpon>SymbolDetailItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\NewsPage\MarketNewsPage.xaml.cs">
+      <DependentUpon>MarketNewsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\NewsPage\NewsItemPage.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>NewItemPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Watchlist.xaml.cs">
+      <DependentUpon>WatchlistPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SymbolPage\TabHeader.xaml.cs">
+      <DependentUpon>TabHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\PortfolioItemDetailPage\PortfolioItemDetailPage.xaml.cs">
+      <DependentUpon>PortfolioItemDetailPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

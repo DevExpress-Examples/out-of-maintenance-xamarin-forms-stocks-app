@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.Editors;assembly=DevExpress.XamarinForms.DemoEditors"
+    xmlns:views="clr-namespace:Stocks.UI.Views"
+    xmlns:viewModels="clr-namespace:Stocks.ViewModels;assembly=Stocks.ViewModels"
+    xmlns:themes="clr-namespace:Stocks.UI.Themes"
+    x:Class="Stocks.UI.Views.EULAPage"
+    x:DataType="viewModels:EULAViewModel"
+    BackgroundColor="{DynamicResource NavigationBarBackgroundColor}"
+    Title="License Agreement">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <themes:DisclaimerStyles/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <NavigationPage.TitleView>
+        <views:TitleView
+            TitleText="{Binding Title}"
+            ShowMenuItem="False">
+        </views:TitleView>
+    </NavigationPage.TitleView>
+
+    <ScrollView>
+        <Grid Style="{StaticResource EulaContainerStyle}">
+            <Label Style="{StaticResource EulaTextStyle}">
+	            <Label.FormattedText>
+		            <FormattedString>
+			            <Span Text="Stock Market App by Developer Express Inc.&#10;" />
+			            <Span Text="License Agreement&#10;&#10;"/>
+
+			            <Span Text="IMPORTANT - THIS AGREEMENT (“AGREEMENT”) SHOULD BE READ CAREFULLY, AND MUST BE ACCEPTED, BEFORE USING THE STOCK MARKET APP associated with this AGREEMENT.&#10;&#10;" />
+
+                        <Span Text="This AGREEMENT constitutes a legally binding agreement between you or the business and/or entity which you represent (“You“) and Developer Express Inc. (“DEVEXPRESS“) for the use of this software application (“APPLICATION”).&#10;&#10;" />
+
+                        <Span Text="USE OF APPLICATION&#10;&#10;" Style="{StaticResource UnderlineBoldStyle}"/>
+
+                        <Span Text="THIS APPLICATION IS PROVIDED FOR FREE AND IS INTENDED ONLY TO DEMONSTRATE THE FUNCTIONALITY OF SPECIFIC SOFTWARE DEVELOPMENT PRODUCT(S) THAT OTHER DEVELOPERS MAY INCORPORATE INTO THEIR OWN APPLICATIONS. IT IS NOT INTENDED OR SUITABLE FOR USE IN TRADING, OR IN DOING ANYTHING ELSE INDEPENDENTLY OF ANOTHER APPLICATION."
+                              Style="{StaticResource BoldStyle}"/>
+
+                        <Span Text="THIS AGREEMENT DOES NOT GRANT YOU RIGHTS TO USE ANY OTHER APPLICATION OR SOFTWARE DEVELOPMENT PRODUCT(S), INCLUDING BUT NOT LIMITED TO, THE SOFTWARE DEVELOPMENT PRODUCT(S) DEMONSTRATED IN THIS APPLICATION.&#10;&#10;"
+                              Style="{StaticResource BoldStyle}"/>
+
+                        <Span Text="ONLINE DATA&#10;&#10;" Style="{StaticResource UnderlineBoldStyle}"/>
+
+                        <Span Text="The APPLICATION uses Data (“DATA”) provided by " />
+                        <views:HyperlinkSpan Text="IEX" Url="https://iexcloud.io/" Style="{StaticResource HyperlinkStyle}"/>
+                        <Span Text=" - " />
+                        <views:HyperlinkSpan Text="https://iexcloud.io/" Url="https://iexcloud.io/" Style="{StaticResource HyperlinkStyle}" />
+                        <Span Text=" (“DATA PROVIDER”). The use and distribution of DATA is governed by the applicable DATA PROVIDER terms found at " />
+                        <views:HyperlinkSpan Text="https://iexcloud.io/terms/" Url="https://iexcloud.io/terms/" Style="{StaticResource HyperlinkStyle}"/>
+                        <Span Text=". You agree not to copy, modify, reformat, download, store, reproduce, reprocess, transmit or redistribute any DATA or information found in the APPLICATION.&#10;&#10;" />
+
+                        <Span Text="WARRANTIES&#10;&#10;" Style="{StaticResource UnderlineBoldStyle}"/>
+
+                        <Span Text="The APPLICATION, and all DATA and information associated with it is provided " />
+                        <Span Text="AS IS.&#10;&#10;" Style="{StaticResource BoldStyle}"/>
+
+                        <Span Text="DATA may be delayed as specified by financial exchanges or DATA PROVIDER. DEVEXPRESS does not verify any DATA and disclaims any obligation to do so.&#10;&#10;" />
+
+                        <Span Text="DEVEXPRESS, further, specifically disclaims the accuracy, adequacy, or completeness of the DATA. You understand that the APPLICATION may produce inaccurate results because of a failure or fault within the APPLICATION, the inaccuracy, incompleteness, inadequacy or delay of DATA, failure by You to properly use and or deploy the APPLICATION, or other factors. You assume full and sole responsibility for any use of the APPLICATION, and bear the entire risk for the consequences of use of the APPLICATION by You.&#10;&#10;" />
+
+                        <Span Text="DISCLAIMER OF LIABILITY&#10;&#10;" Style="{StaticResource UnderlineBoldStyle}"/>
+
+                        <Span Text="TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, DEVEXPRESS DISCLAIMS LIABILITY FOR ANY DIRECT, SPECIAL, INCIDENTAL, INDIRECT OR CONSEQUENTIAL DAMAGES WHATSOEVER (INCLUDING BUT NOT LIMITED TO DAMAGES FOR LOSS OF INVESTMENTS, DAMAGES FOR LOSS OF BUSINESS PROFITS OR REVENUES, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, BUSINESS INFORMATION OR OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THE APPLICATION, EVEN IF DEVEXPRESS HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.&#10;&#10;"
+                              Style="{StaticResource BoldStyle}"/>
+
+                        <Span Text="INDEMNIFICATION&#10;&#10;" Style="{StaticResource UnderlineBoldStyle}"/>
+
+                        <Span Text="You hereby agree to indemnify DEVEXPRESS and its officers, directors, employees, agents, and representatives from each and every demand, claim, loss, liability, or damage of any kind, including actual attorney's fees, whether in tort or contract, that it or any of them may incur by reason of, or arising out of, any claim which is made against DEVEXPRESS by any third party arising out of or relating to any breach or violation of this AGREEMENT by You or any use of the APPLICATION by You, including without limitation any claims asserted by end-users of any product provided by You.&#10;&#10;" />
+
+                        <Span Text="DISCONTINUATION&#10;&#10;" Style="{StaticResource UnderlineBoldStyle}"/>
+
+                        <Span Text="DEVEXPRESS may, at its sole discretion and without a notice of any kind, discontinue availability of the APPLICATION, or limit or modify APPLICATION functionality at any time.&#10;&#10;" />
+
+                        <Span Text="MISCELLANEOUS&#10;&#10;" Style="{StaticResource UnderlineBoldStyle}"/>
+
+                        <Span Text="This AGREEMENT shall be construed, interpreted and governed by the laws of the State of Nevada, U.S.A., without reference to principles of conflicts of laws.&#10;&#10;"
+                              Style="{StaticResource BoldStyle}"/>
+
+                        <Span Text="This AGREEMENT is the entire agreement between You and DEVEXPRESS arising out of or relating to use of the APPLICATION by You, and may only be modified in a writing signed by You and an authorized officer of DEVEXPRESS. If any provision of this AGREEMENT is found void or unenforceable, the remainder will remain valid and enforceable according to its terms.&#10;&#10;" />
+
+                        <Span Text="DEVEXPRESS reserves all rights not specifically granted to You in this AGREEMENT.&#10;&#10;" />
+
+                        <Span Text="Should you have any questions concerning this AGREEMENT, contact us directly in the United States at +1 (818) 844 3383, or write: Developer Express Inc. Legal department / 505 N. Brand Blvd Suite 1450, Glendale CA 91203.&#10;&#10;" />
+
+                        <Span Text="All trademarks and registered trademarks are property of their respective owners.&#10;&#10;" />
+
+                        <Span Text="BY CLICKING “ACCEPT” BELOW, YOU AGREE TO BE BOUND, AND TO BIND ANY BUSINESS ON BEHALF OF WHICH YOU ARE ACTING, TO ALL OF THE TERMS OF THIS AGREEMENT, AND REPRESENT THAT, IF YOU ARE ACTING ON BEHALF OF A BUSINESS, THAT YOU HAVE THE LEGAL AUTHORITY TO BIND THAT BUSINESS TO SUCH TERMS.&#10;" />
+		            </FormattedString>
+	            </Label.FormattedText>
+            </Label>
+            <views:TextButton 
+                Style="{StaticResource AcceptButtonStyle}"
+                Text="Accept"
+                Command="{Binding AcceptCommand}"
+                Clicked="OnAcceptClicked">
+            </views:TextButton>
+            <views:TextButton 
+                Clicked="OnDeclineClicked"
+                Text="Decline"
+                Style="{StaticResource DeclineButtonStyle}">
+            </views:TextButton>
+        </Grid>
+    </ScrollView>
+</ContentPage>

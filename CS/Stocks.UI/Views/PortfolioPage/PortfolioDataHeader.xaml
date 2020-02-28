@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<views:ValueDifferenceView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.Editors;assembly=DevExpress.XamarinForms.DemoEditors"
+    xmlns:views="clr-namespace:Stocks.UI.Views"
+    xmlns:viewModels="clr-namespace:Stocks.ViewModels;assembly=Stocks.ViewModels"
+    xmlns:converters="clr-namespace:Stocks.UI.Converters"
+    x:Class="Stocks.UI.Views.PortfolioDataHeader"
+    ChangeType="{Binding ChangeType}"
+    BackgroundColor="{DynamicResource NavigationBarBackgroundColor}"
+    x:DataType="viewModels:PortfolioViewModel">
+
+    <StackLayout
+        Orientation="Vertical"
+        Spacing="0"
+        CompressedLayout.IsHeadless="True">
+        <Label
+            Text="TOTAL VALUE"
+            TextColor="{StaticResource SecondaryTextColor}"
+            HorizontalTextAlignment="Center"
+            FontSize="Caption"/>
+        <Label
+            Margin="0,12"
+            Text="{Binding TotalText}"
+            TextColor="{DynamicResource PrimaryTextColor}"
+            FontSize="Title"
+            HorizontalTextAlignment="Center"/>
+         <StackLayout
+             Orientation="Horizontal"
+             Spacing="0"
+             HorizontalOptions="CenterAndExpand"
+             Margin="0,0,0,12">
+             <dxe:IconView
+                 ImageSource="{Binding ChangeType, Converter={converters:ChangeTypeToImageNameConverterExtension RisingValue='quote_arrow_up.svg', FallingValue='quote_arrow_down.svg', NoneValue='not_changed.svg'}}"
+                 VerticalOptions="Center"
+                 WidthRequest="16" HeightRequest="16"/>
+            <Label
+                x:Name="totalChangeLabel"
+                Text="{Binding TotalChangeText}"
+                FontSize="Caption"
+                HorizontalTextAlignment="Center"
+                VerticalOptions="End"/>
+        </StackLayout>
+    </StackLayout>
+</views:ValueDifferenceView>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxc="clr-namespace:DevExpress.XamarinForms.Charts;assembly=DevExpress.XamarinForms.Charts"
+             xmlns:dxe="clr-namespace:DevExpress.XamarinForms.Editors;assembly=DevExpress.XamarinForms.DemoEditors"
+             xmlns:themes="clr-namespace:Stocks.UI.Themes"
+             x:Class="Stocks.UI.Views.PortfolioLineChart">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <themes:PortfolioChartsStyles/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <AbsoluteLayout CompressedLayout.IsHeadless="True">        
+        <dxc:ChartView ChartStyle="{StaticResource ChartStyle}" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,1,1,1">
+            <dxc:ChartView.Series>
+                <dxc:LineSeries>
+                    <dxc:LineSeries.Style>
+                        <dxc:LineSeriesStyle Stroke="{StaticResource RisingValueColor}"/>
+                    </dxc:LineSeries.Style>
+                    <dxc:LineSeries.Data>
+                        <dxc:SeriesDataAdapter DataSource="{Binding ChartViewModel.Data}" ArgumentDataMember="Date">
+                            <dxc:ValueDataMember Type="Value" Member="InternalRateOfReturn" />
+                        </dxc:SeriesDataAdapter>
+                    </dxc:LineSeries.Data>
+                </dxc:LineSeries>
+            </dxc:ChartView.Series>
+            <dxc:ChartView.AxisX>
+                <dxc:DateTimeAxisX Style="{StaticResource LineChartAxisStyle}">
+                    <dxc:DateTimeAxisX.Label>
+                        <dxc:AxisLabel Style="{StaticResource LineChartAxisLabelStyle}"/>
+                    </dxc:DateTimeAxisX.Label>
+                </dxc:DateTimeAxisX>
+            </dxc:ChartView.AxisX>
+            <dxc:ChartView.AxisY>
+                <dxc:NumericAxisY Position="Far" AlwaysShowZeroLevel="false" Style="{StaticResource LineChartAxisStyle}">
+                    <dxc:NumericAxisY.Label>
+                        <dxc:AxisLabel TextFormat="#.##%" Position="Inside" Style="{StaticResource LineChartAxisLabelStyle}"/>
+                    </dxc:NumericAxisY.Label>
+                </dxc:NumericAxisY>
+            </dxc:ChartView.AxisY>
+        </dxc:ChartView>
+        <dxe:ContentButton Style="{DynamicResource OpenDetailButtonStyle}" IsVisible="{Binding ChartViewModel.ShouldShowDetail}" Command="{Binding OpenDetailCommand}" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1,1,-1,-1" />
+    </AbsoluteLayout>
+</ContentView>

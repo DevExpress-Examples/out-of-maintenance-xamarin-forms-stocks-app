@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<views:PortfolioDetailedChartPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.Editors;assembly=DevExpress.XamarinForms.DemoEditors"
+    xmlns:dxc="clr-namespace:DevExpress.XamarinForms.Charts;assembly=DevExpress.XamarinForms.Charts"
+    xmlns:views="clr-namespace:Stocks.UI.Views"
+    xmlns:themes="clr-namespace:Stocks.UI.Themes"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    mc:Ignorable="d"
+    BackgroundColor="{DynamicResource BackgroundColor}"
+    x:Class="Stocks.UI.Views.PortfolioLineChartPage"
+    x:Name="self"
+    ios:Page.UseSafeArea="true">
+    <ContentPage.Resources>
+         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <themes:PortfolioChartsStyles/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <AbsoluteLayout CompressedLayout.IsHeadless="True">
+        <dxc:ChartView ChartStyle="{StaticResource ChartStyle}" AxisXNavigationMode="ScrollingAndZooming" AxisMaxZoomPercent="10000" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,1,1,1">
+            <dxc:ChartView.Series>
+                <dxc:LineSeries>
+                    <dxc:LineSeries.HintOptions>
+                        <dxc:SeriesCrosshairOptions PointTextPattern="{}{V$#.##%}&#x0a;{A$dd MMM yy}" />
+                    </dxc:LineSeries.HintOptions>
+                    <dxc:LineSeries.Style>
+                        <dxc:LineSeriesStyle Stroke="{StaticResource RisingValueColor}"/>
+                    </dxc:LineSeries.Style>
+                    <dxc:LineSeries.Data>
+                        <dxc:SeriesDataAdapter DataSource="{Binding Data}" ArgumentDataMember="Date">
+                            <dxc:ValueDataMember Type="Value" Member="InternalRateOfReturn" />
+                        </dxc:SeriesDataAdapter>
+                    </dxc:LineSeries.Data>
+                </dxc:LineSeries>
+            </dxc:ChartView.Series>
+            <dxc:ChartView.AxisX>
+                <dxc:DateTimeAxisX Style="{StaticResource LineChartAxisStyle}">
+                    <dxc:DateTimeAxisX.Label>
+                        <dxc:AxisLabel Style="{StaticResource LineChartAxisLabelStyle}"/>
+                    </dxc:DateTimeAxisX.Label>
+                    <dxc:DateTimeAxisX.Range>
+                        <dxc:DateTimeRange SideMargin="1"/>
+                    </dxc:DateTimeAxisX.Range> 
+                </dxc:DateTimeAxisX>
+            </dxc:ChartView.AxisX>
+            <dxc:ChartView.AxisY>
+                <dxc:NumericAxisY Position="Far" AutoRangeMode="VisibleValues" AlwaysShowZeroLevel="false" Style="{StaticResource LineChartAxisStyle}">
+                    <dxc:NumericAxisY.Label>
+                        <dxc:AxisLabel TextFormat="#.##%" Position="Inside" Style="{StaticResource LineChartAxisLabelStyle}"/>
+                    </dxc:NumericAxisY.Label>
+                </dxc:NumericAxisY>
+            </dxc:ChartView.AxisY>
+            <dxc:ChartView.Hint>
+                <dxc:Hint ShowMode="OnLongPress">
+                    <dxc:Hint.Behavior>
+                        <dxc:CrosshairHintBehavior GroupHeaderVisible="False"/>
+                    </dxc:Hint.Behavior>
+                </dxc:Hint>
+            </dxc:ChartView.Hint>
+        </dxc:ChartView>
+        <dxe:ContentButton Style="{DynamicResource CloseDetailButtonStyle}" Command="{Binding Source={x:Reference self}, Path=CloseCommand}" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1,1,-1,-1" />
+    </AbsoluteLayout>
+</views:PortfolioDetailedChartPage>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<views:ValueDifferenceView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.Editors;assembly=DevExpress.XamarinForms.DemoEditors"
+    xmlns:views="clr-namespace:Stocks.UI.Views"
+    xmlns:viewModels="clr-namespace:Stocks.ViewModels;assembly=Stocks.ViewModels"
+    xmlns:converters="clr-namespace:Stocks.UI.Converters"
+    x:Class="Stocks.UI.Views.HistoricalDataHeader"
+    ChangeType="{Binding ChangeType}"
+    Margin="15,0,0,0"
+    x:DataType="viewModels:SymbolHistoricalPricesHeaderViewModel"
+    CompressedLayout.IsHeadless="True">
+
+    <StackLayout        
+        Orientation="Vertical"
+        HorizontalOptions="StartAndExpand"
+        VerticalOptions="CenterAndExpand"
+        Spacing="0"
+        CompressedLayout.IsHeadless="True">
+        <Label
+            Text="{Binding CompanyName}"
+            TextColor="{DynamicResource TextColor}"
+            FontSize="Subtitle"
+            Margin="0,0,12,0"/>
+        <StackLayout
+            Orientation="Horizontal"
+            Spacing="0"
+            HorizontalOptions="StartAndExpand">
+            <Label
+                Text="{Binding LatestPrice, StringFormat='{0:0.00}'}"
+                TextColor="{DynamicResource TextColor}"
+                FontSize="Title"
+                Margin="0,0,12,0"
+                VerticalOptions="End"
+                VerticalTextAlignment="End"
+                LineBreakMode="TailTruncation"/>
+            <dxe:IconView
+                ImageSource="{Binding ChangeType, Converter={converters:ChangeTypeToImageNameConverterExtension RisingValue='quote_arrow_up.svg', FallingValue='quote_arrow_down.svg', NoneValue='not_changed.svg'}}"
+                VerticalOptions="End">
+                <dxe:IconView.WidthRequest>
+                    <OnPlatform x:TypeArguments="x:Double" Android="20" iOS="24"/>
+                </dxe:IconView.WidthRequest>
+                <dxe:IconView.HeightRequest>
+                    <OnPlatform x:TypeArguments="x:Double" Android="20" iOS="24"/>
+                </dxe:IconView.HeightRequest>
+            </dxe:IconView>
+            <Label
+                x:Name="subtitleLabel"
+                Text="{Binding ChangeText}"
+                VerticalTextAlignment="End"
+                VerticalOptions="End"
+                FontSize="Subtitle"
+                LineBreakMode="TailTruncation"/>
+                
+        </StackLayout>
+        <Label Text="{Binding LatestUpdateText}"
+               TextColor="{DynamicResource SecondaryTextColor}"
+               FontSize="Caption"/>
+
+    </StackLayout>
+
+</views:ValueDifferenceView>

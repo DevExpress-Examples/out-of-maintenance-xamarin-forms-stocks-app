@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.Editors;assembly=DevExpress.XamarinForms.DemoEditors"
+    xmlns:views="clr-namespace:Stocks.UI.Views"
+    xmlns:models="clr-namespace:Stocks.ViewModels;assembly=Stocks.ViewModels"
+    x:Class="Stocks.UI.Views.TransactionRow"
+    x:Name="self">
+    <Grid
+        CompressedLayout.IsHeadless="True"
+        Style="{StaticResource ListSymbolContainerStyle}">
+        <BoxView Style="{StaticResource ListSymbolTransactionIconContainerStyle}" BackgroundColor="{DynamicResource RisingValueColor-Dark}">
+            <BoxView.Triggers>
+                <DataTrigger TargetType="BoxView" Binding="{Binding Type}" Value="{x:Static models:TransactionType.Sell}">
+                    <Setter Property="BackgroundColor" Value="{DynamicResource FallingValueColor-Dark}" />
+                </DataTrigger>
+            </BoxView.Triggers>
+        </BoxView>
+
+        <dxe:IconView Style="{StaticResource ListSymbolTransactionIconStyle}" ImageSource="buy.svg" ForegroundColor="{DynamicResource RisingValueColor}">
+            <dxe:IconView.Triggers>
+                <DataTrigger TargetType="dxe:IconView" Binding="{Binding Type}" Value="{x:Static models:TransactionType.Sell}">
+                    <Setter Property="ImageSource" Value="sell.svg" />
+                    <Setter Property="ForegroundColor" Value="{DynamicResource FallingValueColor}" />
+                </DataTrigger>
+            </dxe:IconView.Triggers>
+        </dxe:IconView>
+
+        <Label
+            Text="{Binding DateString}"
+            Style="{StaticResource ListSymbolTransactionDateStyle}"/>
+
+        <Label
+            Text="{Binding Ticker}"
+            Style="{StaticResource ListSymbolTransactionTickerStyle}"/>
+
+        <Label
+            Text="{Binding PriceWithCountText}"
+            Style="{StaticResource ListSymbolTransactionPriceWithCountTextStyle}"/>
+
+        <Label
+            Text="{Binding TotalText}"
+            Style="{StaticResource ListSymbolTransactionTotalTextStyle}"/>
+       
+            
+        <BoxView Style="{StaticResource ListSymbolSeparatorStyle}"/>
+
+    </Grid>
+</ContentView>

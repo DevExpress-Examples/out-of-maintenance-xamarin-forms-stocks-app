@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Stocks.UI.Views"
+    xmlns:utils="clr-namespace:Stocks.UI.Utils"
+    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.Editors;assembly=DevExpress.XamarinForms.DemoEditors"
+    xmlns:dxg="clr-namespace:DevExpress.XamarinForms.DataGrid;assembly=DevExpress.XamarinForms.Grid"
+    xmlns:dxn="clr-namespace:DevExpress.XamarinForms.Navigation;assembly=DevExpress.XamarinForms.Navigation"
+    xmlns:converters="clr-namespace:Stocks.UI.Converters"
+    xmlns:themes="clr-namespace:Stocks.UI.Themes"
+    xmlns:viewModels="clr-namespace:Stocks.ViewModels;assembly=Stocks.ViewModels"
+    x:Name="self"
+    x:Class="Stocks.UI.Views.PortfolioView"
+    x:DataType="viewModels:PortfolioViewModel">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <themes:PortfolioStyles/>
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate x:Key="headerItemTemplate" x:DataType="viewModels:PortfolioTabItemViewModel">
+                <dxe:IconView Margin="16"
+                    WidthRequest="8" 
+                    HeightRequest="8"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    ForegroundColor="{Binding IsSelected, Converter={converters:BoolToColorConverter TrueColor={StaticResource AccentColor}, FalseColor={StaticResource PortfolioPage_TabViewHeaderItemColor}}}"
+                    ImageSource="circle.svg">
+                </dxe:IconView>
+            </DataTemplate>
+
+            <DataTemplate x:Key="lineChartTemplate">
+                <views:PortfolioLineChart/>
+            </DataTemplate>
+            <DataTemplate x:Key="donutChartTemplate">
+                <views:PortfolioDonutChart/>
+            </DataTemplate>
+            <DataTemplate x:Key="barChartTemplate">
+                <views:PortfolioBarChart/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <Grid>
+        <BoxView
+            x:Name="filler"
+            VerticalOptions="Start"
+            Color="{DynamicResource NavigationBarBackgroundColor}"/>
+
+    <ScrollView
+        x:Name="scrollView"
+        Scrolled="OnScrolled">
+        
+        <Grid CompressedLayout.IsHeadless="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="300" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <views:PortfolioDataHeader
+                x:Name="header"
+                Style="{StaticResource ValueDifferenceViewStyle}"/>
+
+            <dxn:TabView
+                x:Name="tabControl"
+                ItemHeaderTemplate="{StaticResource headerItemTemplate}"
+                ItemTemplate="{utils:PortfolioTabItemTemplateSelector LineChartTemplate={StaticResource lineChartTemplate}, DonutChartTemplate={StaticResource donutChartTemplate}, BarChartTemplate={StaticResource barChartTemplate}}"
+                SelectedItem="{Binding SelectedChart, Mode=TwoWay}"
+                ItemsSource="{Binding Charts}"
+                Grid.Row="1"
+                HeaderPanelHeight="40"
+                HeaderPanelIndent="0"
+                HeaderPanelItemSpacing="0"
+                ItemHeaderWidth="Auto"
+                
+                IsHeaderPanelShadowVisible="False"
+                IsSelectedItemIndicatorVisible="False"
+                HeaderPanelBackgroundColor="Transparent"
+                HeaderPanelPosition="Bottom"
+                BackgroundColor="{StaticResource BackgroundColor}"/>
+
+            <dxg:DataGridView
+                x:Name="grid"
+                Grid.Row="2"
+                RowTapCommand="{Binding ShowPortfolioItemDetailCommand}"
+                AllowCascadeTreeCreation="True"
+                AllowCascadeUpdate="True"
+                HeightRequest="{Binding RowsHeight}"
+                ItemsSource="{Binding Content}"
+                RowHeight="{Binding RowHeight}"
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                IsUpdateLocked="{Binding State, Converter={converters:ObjectComparerConverter Reference={x:Static viewModels:InitializableViewModelState.Loading}}}"
+                ColumnHeaderHeight="{Binding HeaderHeight}"
+                Style="{StaticResource PortfolioDataGridStyle}">
+                <dxg:DataGridView.ColumnHeaderStyle>
+                    <dxg:ColumnHeaderStyle
+                        BackgroundColor="Transparent"
+                        Padding="16,0"
+                        HorizontalLineThickness="0"/>
+                </dxg:DataGridView.ColumnHeaderStyle>
+                <dxg:DataGridView.StartSwipeItems>
+                    <dxg:SwipeItem Command="{Binding AddTransactionOfExistingTickerCommand}">
+                        <dxg:SwipeItem.Template>
+                            <DataTemplate> 
+                                <views:ManagePositionSwipeButton />
+                            </DataTemplate>
+                        </dxg:SwipeItem.Template>
+                    </dxg:SwipeItem>
+                </dxg:DataGridView.StartSwipeItems>
+                <dxg:DataGridView.Columns>
+                    <dxg:TemplateColumn>
+                        <dxg:TemplateColumn.DisplayTemplate>
+                            <DataTemplate x:DataType="dxg:CellData">
+                                <views:PortfolioItemRow
+                                        CompressedLayout.IsHeadless="True"
+                                        Style="{StaticResource PortfolioItemStyle}"/>
+                            </DataTemplate>
+                        </dxg:TemplateColumn.DisplayTemplate>
+                        <dxg:TemplateColumn.HeaderContentTemplate>
+                            <DataTemplate>
+                                <views:PortfolioItemHeader/>
+                            </DataTemplate>
+                        </dxg:TemplateColumn.HeaderContentTemplate>
+                    </dxg:TemplateColumn>
+                </dxg:DataGridView.Columns>
+            </dxg:DataGridView>
+        </Grid>
+    </ScrollView>
+    </Grid>
+</ContentView>

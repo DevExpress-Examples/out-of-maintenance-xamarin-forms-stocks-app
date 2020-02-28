@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:themes="clr-namespace:Stocks.UI.Themes"
+    x:Class="Stocks.UI.Views.PortfolioItemHeader"
+    CompressedLayout.IsHeadless="True">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <themes:PortfolioStyles/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+        <Grid CompressedLayout.IsHeadless="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="24"/>
+                <RowDefinition Height="1"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Label
+                Text="Count/Open Price/Actual Price"
+                Grid.Row="0"
+                Grid.Column="0"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource PortfolioItemHeaderLabelStyle}"/>
+            <Label
+                Text="Portion/Net Value/Income"
+                Grid.Row="0"
+                Grid.Column="1"
+                HorizontalOptions="End"
+                Style="{StaticResource PortfolioItemHeaderLabelStyle}"/>
+            <BoxView
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Style="{StaticResource PortfolioItemSepatorStyle}"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

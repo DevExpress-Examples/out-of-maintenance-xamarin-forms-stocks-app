@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<views:InitializablePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:views="clr-namespace:Stocks.UI.Views"
+    xmlns:converters="clr-namespace:Stocks.UI.Converters"
+    xmlns:viewModels="clr-namespace:Stocks.ViewModels;assembly=Stocks.ViewModels"
+    xmlns:dxg="clr-namespace:DevExpress.XamarinForms.DataGrid;assembly=DevExpress.XamarinForms.Grid"
+    mc:Ignorable="d"
+    x:Class="Stocks.UI.Views.MarketPage"
+    x:Name="BrowseItemsPage"
+    BackgroundColor="{DynamicResource BackgroundColor}"
+    x:DataType="viewModels:MarketViewModel"
+    ios:Page.UseSafeArea="True"
+    RetryButtonCaption="RETRY"
+    RetryButtonCommand="{Binding ReloadContentCommand}">
+
+    <NavigationPage.TitleView>
+        <views:TitleView
+            TitleText="{Binding Title}"
+            MenuIconSource="menu.svg"
+            ShowMenuItem="True">
+            <views:TitleView.EndItems>
+                <views:BarIconItem IconSource="search.svg" Command="{Binding ShowSearchDialogCommand}"/>
+            </views:TitleView.EndItems>
+        </views:TitleView>
+    </NavigationPage.TitleView>
+
+    <views:InitializablePage.ContentView>
+        <dxg:DataGridView
+            ItemsSource="{Binding Content}"
+            RowTapCommand="{Binding SelectItemCommand}"
+            IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+            PullToRefreshCommand="{Binding ReloadContentCommand}"
+            IsUpdateLocked="{Binding State, Converter={converters:ObjectComparerConverter Reference={x:Static viewModels:InitializableViewModelState.Loading}}}"
+            Style="{StaticResource DataGridStyle}"
+            AllowCascadeTreeCreation="False"
+            AllowGroupCollapse="True">
+            <dxg:DataGridView.GroupRowTemplate>
+                <DataTemplate x:DataType="dxg:GroupRowData">
+                    <views:SymbolGroupRow x:Name="groupRow"
+                        Text="{Binding Value, Converter={converters:ListTypeToListCaptionConverter}}"
+                        ShowGroupImage="True"
+                        GroupImageSource="{Binding Text, Source={x:Reference groupRow}, Converter={converters:ToFilenameConverter}}"/>
+                </DataTemplate>
+            </dxg:DataGridView.GroupRowTemplate>
+            <dxg:DataGridView.Columns>
+                <dxg:PickerColumn
+                    FieldName="ListType"
+                    IsGrouped="True"/>
+                <dxg:TemplateColumn>
+                    <dxg:TemplateColumn.DisplayTemplate>
+                        <DataTemplate x:DataType="dxg:CellData">
+                            <ContentView Style="{StaticResource RowWrapper}">
+                                <views:SymbolRow
+                                    BindingContext="{Binding Item}"
+                                    CompressedLayout.IsHeadless="True"
+                                    Style="{StaticResource ValueDifferenceViewStyle}"/>
+                            </ContentView>
+                        </DataTemplate>
+                    </dxg:TemplateColumn.DisplayTemplate>
+                </dxg:TemplateColumn>
+            </dxg:DataGridView.Columns>
+        </dxg:DataGridView>
+    </views:InitializablePage.ContentView>
+</views:InitializablePage>

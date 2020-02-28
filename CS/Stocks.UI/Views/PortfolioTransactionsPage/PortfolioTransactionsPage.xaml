@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:InitializablePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:views="clr-namespace:Stocks.UI.Views"
+    xmlns:viewModels="clr-namespace:Stocks.ViewModels;assembly=Stocks.ViewModels"
+    xmlns:converters="clr-namespace:Stocks.UI.Converters"
+    xmlns:dxg="clr-namespace:DevExpress.XamarinForms.DataGrid;assembly=DevExpress.XamarinForms.Grid"
+    x:Class="Stocks.UI.Views.PortfolioTransactionsPage"
+    BackgroundColor="{DynamicResource BackgroundColor}"
+    Title="{Binding Title}"
+    x:DataType="viewModels:PortfolioTransactionsViewModel"
+    ios:Page.UseSafeArea="True"
+    PlaceholderText="Your transaction log is empty."
+    PlaceholderIconSource="empty_portfolio"
+    RetryButtonCaption="RETRY"
+    RetryButtonCommand="{Binding ReloadContentCommand}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="sorting" Clicked="OnSetUpGroupClicked"/>
+        <ToolbarItem IconImageSource="add" Command="{Binding AddTransactionCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <views:InitializablePage.ContentView>
+        <dxg:DataGridView
+            x:Name="gridView"
+            FullSwipeMode="None"
+            ItemsSource="{Binding Content}"
+            AllowGroupCollapse="True"
+            IsPullToRefreshEnabled="False"
+            SortMode="Multiple"
+            Style="{StaticResource DataGridStyle}">
+            <dxg:DataGridView.StartSwipeItems>
+                <dxg:SwipeItem Width="95" Command="{Binding EditTransactionCommand}">
+                    <dxg:SwipeItem.Template>
+                        <DataTemplate> 
+                            <views:EditSwipeButton />
+                        </DataTemplate>
+                    </dxg:SwipeItem.Template>
+                </dxg:SwipeItem>
+            </dxg:DataGridView.StartSwipeItems>
+            <dxg:DataGridView.EndSwipeItems>
+                <dxg:SwipeItem Width="95" Command="{Binding RemoveTransactionCommand}">
+                    <dxg:SwipeItem.Template>
+                        <DataTemplate> 
+                            <views:DeleteSwipeButton />
+                        </DataTemplate>
+                    </dxg:SwipeItem.Template>
+                </dxg:SwipeItem>
+            </dxg:DataGridView.EndSwipeItems>
+            <dxg:DataGridView.GroupRowTemplate>
+                <DataTemplate x:DataType="dxg:GroupRowData">
+                    <views:SymbolGroupRow Text="{Binding Value, Converter={converters:GroupedColumnValueToCaptionConverter}}"/>
+                </DataTemplate>
+            </dxg:DataGridView.GroupRowTemplate>
+            <dxg:DataGridView.Columns>
+                <dxg:DateColumn
+                    FieldName="Date"
+                    IsGrouped="{Binding IsGroupedByDate, Mode=TwoWay}"
+                    IsVisible="{Binding IsGroupedByDate}"
+                    GroupInterval="Date"
+                    SortIndex="1"
+                    SortOrder="Descending">
+                </dxg:DateColumn>
+                <dxg:TextColumn
+                    FieldName="Ticker"
+                    IsGrouped="{Binding IsGroupedByTicker, Mode=TwoWay}"
+                    IsVisible="{Binding IsGroupedByTicker}"
+                    SortIndex="2">
+                </dxg:TextColumn>
+                <dxg:TextColumn
+                    FieldName="Type"
+                    IsGrouped="{Binding IsGroupedByType, Mode=TwoWay}"
+                    IsVisible="{Binding IsGroupedByType}"
+                    SortIndex="3">
+                </dxg:TextColumn>
+                <dxg:TemplateColumn
+                    FieldName="Date"
+                    SortIndex="4"
+                    SortOrder="Descending">
+                    <dxg:TemplateColumn.DisplayTemplate>
+                        <DataTemplate x:DataType="dxg:CellData">
+                            <ContentView
+                                Margin="0"
+                                Padding="0"
+                                CompressedLayout.IsHeadless="True">
+                                <views:TransactionRow
+                                    BindingContext="{Binding Item}"
+                                    CompressedLayout.IsHeadless="True"/>
+                            </ContentView>
+                        </DataTemplate>
+                    </dxg:TemplateColumn.DisplayTemplate>
+                </dxg:TemplateColumn>
+            </dxg:DataGridView.Columns>
+        </dxg:DataGridView>
+    </views:InitializablePage.ContentView>
+</views:InitializablePage>

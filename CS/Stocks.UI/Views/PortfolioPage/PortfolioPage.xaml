@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<views:InitializablePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:Stocks.UI.Views"
+    xmlns:viewModels="clr-namespace:Stocks.ViewModels;assembly=Stocks.ViewModels"
+    xmlns:converters="clr-namespace:Stocks.UI.Converters"
+    mc:Ignorable="d"
+    BackgroundColor="{DynamicResource BackgroundColor}"
+    x:Class="Stocks.UI.Views.PortfolioPage"
+    x:DataType="viewModels:PortfolioViewModel"
+    PlaceholderText="Your portfolio is empty."
+    PlaceholderIconSource="empty_portfolio"
+    PlaceholderActionButtonCaption="ADD"
+    PlaceholderActionButtonCommand="{Binding AddTransactionOfNewTickerCommand}"
+    RetryButtonCaption="RETRY"
+    RetryButtonCommand="{Binding ReloadContentCommand}">
+
+    <NavigationPage.TitleView>
+        <views:TitleView
+            TitleText="{Binding Title}"
+            MenuIconSource="menu.svg"
+            ShowMenuItem="True">
+            <views:TitleView.EndItems>
+                <views:BarIconItem
+                    IconSource="add.svg"
+                    Command="{Binding AddTransactionOfNewTickerCommand}"/>
+                <views:BarIconItem
+                    IconSource="manage_transactions.svg"
+                    Command="{Binding ShowTransactionsLogCommand}"
+                    IsEnabled="{Binding State, Converter={converters:InitializableViewModelStateToContentVisibilityConverter}}"
+                    Style="{DynamicResource BarIconItemStyle}"/>
+            </views:TitleView.EndItems>
+        </views:TitleView>
+    </NavigationPage.TitleView>
+
+    <views:InitializablePage.ContentView>
+        <views:PortfolioView
+            x:Name="portfolioView"/>
+    </views:InitializablePage.ContentView>
+</views:InitializablePage>

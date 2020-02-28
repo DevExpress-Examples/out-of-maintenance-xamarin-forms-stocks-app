@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:Stocks.ViewModels;assembly=Stocks.ViewModels"
+    xmlns:themes="clr-namespace:Stocks.UI.Themes"
+    x:Class="Stocks.UI.Views.EmptyNewsListView"
+    x:DataType="viewModels:NewsListViewModel">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <themes:EmptyScreensStyles/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <StackLayout
+        CompressedLayout.IsHeadless="True"
+        Style="{StaticResource InformationContainerStyle}">
+        <Image
+            Source="empty_news"
+            Style="{StaticResource ImageStyle}"/>
+        <Label
+            x:Name="messageLabel"
+            Style="{StaticResource MessageStyle-Last}"/>
+    </StackLayout>
+</ContentView>

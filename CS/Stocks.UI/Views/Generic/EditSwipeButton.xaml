@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.Editors;assembly=DevExpress.XamarinForms.DemoEditors"
+    x:Class="Stocks.UI.Views.EditSwipeButton">
+    <StackLayout Margin="0" Padding="0" BackgroundColor="{DynamicResource EditSwipeItemBackgroundColor}">
+        <dxe:IconView ImageSource="edit.svg" ForegroundColor="{DynamicResource TextColor}" VerticalOptions="EndAndExpand" HorizontalOptions="Center" WidthRequest="24" HeightRequest="24"/>
+        <Label Text="Edit" TextColor="{DynamicResource TextColor}" VerticalOptions="StartAndExpand" HorizontalOptions="Center"/>
+    </StackLayout>
+</ContentView>

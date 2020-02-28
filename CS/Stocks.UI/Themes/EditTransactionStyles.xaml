@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.Editors;assembly=DevExpress.XamarinForms.DemoEditors"
+    xmlns:views="clr-namespace:Stocks.UI.Views"
+    xmlns:viewModels="clr-namespace:Stocks.ViewModels;assembly=Stocks.ViewModels"
+    x:Class="Stocks.UI.Themes.EditTransactionStyles">
+
+    <Style x:Key="EditorLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}"/>
+        <Setter Property="FontSize" Value="Medium"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="Margin" Value="0,0,16,0"/>
+    </Style>
+
+    <Style x:Key="WarningLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource WarningMessageColor}"/>
+        <Setter Property="FontSize" Value="Small"/>
+        <Setter Property="VerticalOptions" Value="Start"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="Margin" Value="0,0,16,0"/>
+    </Style>
+
+    <Style x:Key="IconStyle" TargetType="dxe:IconView">
+        <Setter Property="WidthRequest" Value="22"/>
+        <Setter Property="HeightRequest" Value="22"/>
+        <Setter Property="MinimumWidthRequest" Value="22"/>
+        <Setter Property="MinimumHeightRequest" Value="22"/>
+        <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="ForegroundColor" Value="{DynamicResource SecondaryTextColor}"/>
+    </Style>
+
+    <Style x:Key="SupplementaryLabelStyle" TargetType="Label">
+        <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
+        <Setter Property="FontSize" Value="Medium"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="TextColor" Value="{DynamicResource SecondaryTextColor}"/>
+    </Style>
+
+    <Style x:Key="ContentLabelStyle" TargetType="Label">
+        <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
+        <Setter Property="FontSize" Value="Medium"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="TextColor" Value="{DynamicResource TextColor}"/>
+    </Style>
+
+    <Style x:Key="SeparatorStyle" TargetType="BoxView">
+        <Setter Property="HeightRequest" Value="1"/>
+        <Setter Property="Color" Value="{DynamicResource SeparatorColor}"/>
+        <Setter Property="Margin" Value="24,0"/>
+    </Style>
+
+    <Style x:Key="EditorStyle" TargetType="dxe:TextEdit">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontSize" Value="Medium"/>
+        <Setter Property="TextColor" Value="{DynamicResource TextColor}"/>
+        <Setter Property="PlaceholderColor" Value="{DynamicResource SecondaryTextColor}"/>
+        <Setter Property="CursorColor" Value="{DynamicResource AccentColor}"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="End"/>
+        <Setter Property="Keyboard" Value="Numeric"/>
+    </Style>
+
+    <Style x:Key="DatePickerStyle" TargetType="dxe:DateEdit">
+        <Setter Property="TextColor" Value="{DynamicResource TextColor}"/>
+        <Setter Property="FontSize" Value="Medium"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="End"/>
+        
+    </Style>
+
+    <Style x:Key="TextButtonStyle" TargetType="views:TextButton">  
+        <Setter Property="CornerRadius" Value="16"/>
+        <Setter Property="WidthRequest" Value="64"/>
+        <Setter Property="HeightRequest" Value="32"/>
+        <Setter Property="TextColor" Value="{DynamicResource DrawerForegroundColor}"/>
+        <Setter Property="BackgroundColor" Value="{DynamicResource TransactionTypeButtonBackgroundColor}"/>
+        <Setter Property="PressedBackgroundColor" Value="{DynamicResource TransactionTypeButtonBackgroundColor-Pressed}"/>
+    </Style>
+
+    <Style
+        x:Key="BuyButtonStyle"
+        TargetType="views:TextButton"
+        BasedOn="{StaticResource TextButtonStyle}">
+        <Setter Property="PressedBackgroundColor" Value="{DynamicResource BuyTransactionButtonBackground-Pressed}"/>
+        <Style.Triggers>
+                <DataTrigger
+                    TargetType="views:TextButton"
+                    Binding="{Binding TransactionType}"
+                    Value="{x:Static viewModels:TransactionType.Buy}">
+                    <Setter Property="BackgroundColor" Value="{DynamicResource BuyTransactionButtonBackground}"/>
+                </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style
+        x:Key="SellButtonStyle"
+        TargetType="views:TextButton"
+        BasedOn="{StaticResource TextButtonStyle}">
+        <Setter Property="PressedBackgroundColor" Value="{DynamicResource SellTransactionButtonBackground-Pressed}"/>
+        <Style.Triggers>
+                <DataTrigger
+                    TargetType="views:TextButton"
+                    Binding="{Binding TransactionType}"
+                    Value="{x:Static viewModels:TransactionType.Sell}">
+                    <Setter Property="BackgroundColor" Value="{DynamicResource SellTransactionButtonBackground}"/>
+                </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="RowContainer" TargetType="StackLayout">
+        <Setter Property="Padding" Value="24,16"/>
+        <Setter Property="Orientation" Value="Horizontal"/>
+    </Style>
+
+    <Style x:Key="ColumnContainer" TargetType="StackLayout">
+        <Setter Property="Padding" Value="24,16"/>
+        <Setter Property="Orientation" Value="Vertical"/>
+    </Style>
+
+    <Style x:Key="ButtonsLayout" TargetType="StackLayout">
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Spacing" Value="0"/>
+    </Style>
+
+    <Style x:Key="ButtonsLayoutContainer" TargetType="Frame">
+        <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
+        <Setter Property="HasShadow" Value="false"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="CornerRadius" Value="20"/>
+        <Setter Property="WidthRequest" Value="136"/>
+        <Setter Property="HeightRequest" Value="40"/>
+        <Setter Property="BackgroundColor" Value="{DynamicResource TransactionTypeButtonBackgroundColor}"/> 
+    </Style>
+</ResourceDictionary>

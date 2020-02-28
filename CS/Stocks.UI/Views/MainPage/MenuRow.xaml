@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:SelectableView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.Editors;assembly=DevExpress.XamarinForms.DemoEditors"
+    xmlns:views="clr-namespace:Stocks.UI.Views"
+    xmlns:viewModels="clr-namespace:Stocks.ViewModels;assembly=Stocks.ViewModels"
+    xmlns:conveters="clr-namespace:Stocks.UI.Converters"
+    x:Class="Stocks.UI.Views.MenuRow"
+    IsSelected="{Binding IsPresented}"
+    x:DataType="viewModels:INavigableViewModel">
+
+    <StackLayout
+        Padding="0"
+        Orientation="Horizontal"
+        Spacing="0">
+        <dxe:IconView
+            x:Name="icon"
+            ImageSource="{Binding Title, Converter={conveters:ToFilenameConverter}}"
+            WidthRequest="24"
+            HeightRequest="24"
+            VerticalOptions="Center"
+            HorizontalOptions="Start"
+            Margin="32,0,16,0"/>
+        <Label
+            x:Name="label"
+            Text="{Binding Title}"
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="Start"
+            FontSize="Medium"/>
+    </StackLayout>
+
+</views:SelectableView>

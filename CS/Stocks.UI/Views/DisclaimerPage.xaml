@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:PopupPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.Editors;assembly=DevExpress.XamarinForms.DemoEditors"
+    xmlns:views="clr-namespace:Stocks.UI.Views"
+    xmlns:viewModels="clr-namespace:Stocks.ViewModels;assembly=Stocks.ViewModels"
+    xmlns:themes="clr-namespace:Stocks.UI.Themes"
+    x:Class="Stocks.UI.Views.DisclaimerPage"
+    x:DataType="viewModels:DisclaimerViewModel">
+
+    <views:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <themes:DisclaimerStyles/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </views:PopupPage.Resources>
+
+    <Grid Style="{StaticResource DisclaimerContainerStyle}">
+        <dxe:IconView
+            ImageSource="disclaimer.svg"
+            Style="{StaticResource WarningIconStyle}"/>
+        <Label Style="{StaticResource DisclaimerTextStyle}">
+	        <Label.FormattedText>
+		        <FormattedString>
+			        <Span Text="THIS APPLICATION IS INTENDED ONLY TO DEMONSTRATE SOFTWARE DEVELOPMENT PRODUCTS THAT OTHER DEVELOPERS MAY INCORPORATE INTO THEIR OWN APPLICATIONS. IT IS NOT INTENDED OR SUITABLE FOR USE IN TRADING, OR OTHERWISE INDEPENDENTLY OF ANOTHER APPLICATION.&#10;&#10;"/>
+			        <Span Text="USE OF THIS APPLICATION IS SUBJECT TO THE TERMS OF THE “AGREEMENT” ACCEPTED BY THE USER PRIOR TO INITIAL USE OF THIS APPLICATION.&#10;&#10;"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <views:TextButton
+            Text="OK"
+            Style="{StaticResource OkButtonStyle}"
+            Clicked="OnOkClicked">
+        </views:TextButton>
+    </Grid>
+</views:PopupPage>

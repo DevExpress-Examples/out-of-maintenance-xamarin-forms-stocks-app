@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:app="http://schemas.android.com/apk/res-auto">
+    <style name="MainTheme" parent="Base.MainTheme">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
+    
+    <style name="Base.MainTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionModeOverlay">true</item>
+
+        <item name="android:datePickerDialogTheme">@style/AppTheme.Dialog.Alert</item>
+    </style>
+
+    <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Dialog">
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.Dialog.Alert" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="android:windowMinWidthMajor">@dimen/alert_dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@dimen/alert_dialog_min_width_major</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/AppTheme.NegativeButtonStyle</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/AppTheme.PositiveButtonStyle</item>
+
+        <item name="android:textColorPrimary">@color/textColor</item>
+        <item name="android:textColorSecondary">@color/textColor</item>
+        <item name="android:textColorTertiary">@color/textColor</item>
+    </style>
+    <style name="AppTheme.NegativeButtonStyle" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:minWidth">@dimen/btn_button_bar_minimum_width</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:background">@drawable/btn_negative_bar_button_background</item>
+    </style>
+    <style name="AppTheme.PositiveButtonStyle" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:minWidth">@dimen/btn_button_bar_minimum_width</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:background">@drawable/btn_positive_bar_button_background</item>
+    </style>
+
+</resources>

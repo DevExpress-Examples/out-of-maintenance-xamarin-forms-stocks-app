@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:InitializablePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"  
+    xmlns:views="clr-namespace:Stocks.UI.Views"
+    xmlns:viewModels="clr-namespace:Stocks.ViewModels;assembly=Stocks.ViewModels"
+    xmlns:themes="clr-namespace:Stocks.UI.Themes"
+    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.Editors;assembly=DevExpress.XamarinForms.DemoEditors"
+    x:Class="Stocks.UI.Views.SymbolChartPage"
+    ios:Page.UseSafeArea="True"
+    BackgroundColor="{DynamicResource BackgroundColor}"
+    x:DataType="viewModels:SymbolChartViewModel"
+    RetryButtonCaption="RETRY"
+    RetryButtonCommand="{Binding ReloadContentCommand}">
+    <ContentPage.Resources>
+         <ResourceDictionary>
+             <ResourceDictionary.MergedDictionaries>
+                 <themes:ChartControlPanelStyles/>
+             </ResourceDictionary.MergedDictionaries>
+         </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <views:InitializablePage.ContentView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="115"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="70"/>
+            </Grid.ColumnDefinitions>
+
+            <views:HistoricalDataHeader
+                Grid.Row="0" Grid.Column="0"
+                BindingContext="{Binding Header}"
+                Style="{StaticResource ValueDifferenceViewStyle}"/>
+            <StackLayout
+                Grid.Row="0"
+                Grid.Column="1"
+                Orientation="Vertical">
+                <views:ToggleButton
+                    CheckedIconSource="financial_chart.svg"
+                    UncheckedIconSource="area_chart.svg"
+                    IsChecked="{Binding HistoricalValues.IsCloseOnlyShown}"
+                    Style="{StaticResource ToggleButtonStyle}"/>
+                <dxe:ContentButton Style="{DynamicResource TimeFrameContentButtonStyle}" Clicked="OnClicked">
+                    <Label Text="{Binding HistoricalValues.TimeFrame}" Style="{StaticResource ButtonTextStyle}"/>
+                </dxe:ContentButton>
+            </StackLayout>
+        
+            <views:HistoricalDataChart
+                Grid.Row="1" Grid.ColumnSpan="2"
+                BindingContext="{Binding HistoricalValues}"/>
+        </Grid>
+    </views:InitializablePage.ContentView>
+</views:InitializablePage>

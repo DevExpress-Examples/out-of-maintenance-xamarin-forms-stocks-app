@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Stocks.UI.Views"
+    xmlns:viewModels="clr-namespace:Stocks.ViewModels;assembly=Stocks.ViewModels"
+    xmlns:converters="clr-namespace:Stocks.UI.Converters"
+    xmlns:dxc="clr-namespace:DevExpress.XamarinForms.Charts;assembly=DevExpress.XamarinForms.Charts"
+    x:Class="Stocks.UI.Views.HistoricalDataChart"
+    x:DataType="viewModels:SymbolHistoricalPricesViewModel"
+    CompressedLayout.IsHeadless="True">
+
+    <dxc:ChartView
+        Theme="Dark"
+        Grid.Row="0"
+        x:Name="ohlcChart"
+        AxisXNavigationMode="ScrollingAndZooming"
+        AxisMaxZoomPercent="100000">
+        <dxc:ChartView.AxisX>
+            <dxc:DateTimeAxisX
+                x:Name="axisX"
+                EmptyRangesVisible="False" LabelTextFormatter="{Binding TimeFrame, Converter={converters:TimeFrameToDateTimeAxisTextFormatterConverter}}"
+                MeasureUnit="{Binding TimeFrame, Converter={converters:TimeFrameToDateTimeMeasureUnitConverter}}">
+                <dxc:DateTimeAxisX.Range>
+                    <dxc:DateTimeRange
+                        SideMargin="1"
+                        VisualMin="{Binding RangeStart}"
+                        VisualMax="{Binding RangeEnd}"/>
+                </dxc:DateTimeAxisX.Range>
+                <dxc:DateTimeAxisX.Label>
+                    <dxc:AxisLabel>
+                        <dxc:AxisLabel.Style>
+                            <dxc:AxisLabelStyle>
+                                <dxc:AxisLabelStyle.TextStyle>
+                                    <dxc:TextStyle Color="{StaticResource TextColor}"/>
+                                </dxc:AxisLabelStyle.TextStyle>
+                            </dxc:AxisLabelStyle>
+                        </dxc:AxisLabel.Style>
+                    </dxc:AxisLabel>
+                </dxc:DateTimeAxisX.Label>
+            </dxc:DateTimeAxisX>
+        </dxc:ChartView.AxisX>
+        <dxc:ChartView.AxisY>
+            <dxc:NumericAxisY
+                Position="Far"
+                AlwaysShowZeroLevel="False"
+                AutoRangeMode="VisibleValues">
+                <dxc:NumericAxisY.Layout>
+                    <dxc:AxisLayout Anchor1="0.333" Anchor2="1.0" />
+                </dxc:NumericAxisY.Layout>
+                <dxc:NumericAxisY.Label>
+                    <dxc:AxisLabel Position="Inside" TextFormat="$#.#">
+                        <dxc:AxisLabel.Style>
+                            <dxc:AxisLabelStyle>
+                                <dxc:AxisLabelStyle.TextStyle>
+                                    <dxc:TextStyle Color="{StaticResource TextColor}"/>
+                                </dxc:AxisLabelStyle.TextStyle>
+                            </dxc:AxisLabelStyle>
+                        </dxc:AxisLabel.Style>
+                    </dxc:AxisLabel>
+                </dxc:NumericAxisY.Label>
+                <dxc:NumericAxisY.Style>
+                    <dxc:AxisStyle
+                        LineVisible="False"
+                        MajorGridlinesVisible="True"
+                        MajorGridlinesColor="{StaticResource SeparatorColor}"/>
+                </dxc:NumericAxisY.Style>
+            </dxc:NumericAxisY>
+        </dxc:ChartView.AxisY>
+        <dxc:ChartView.Series>
+            <dxc:CandleStickSeries
+                Visible="{Binding IsCloseOnlyShown, Converter={converters:InverseBoolConverter}}">
+                <dxc:CandleStickSeries.Data>
+                    <dxc:SeriesDataAdapter
+                        DataSource="{Binding Content}"
+                        ArgumentDataMember="Timestamp">
+                        <dxc:ValueDataMember Type="Open" Member="Open"/>
+                        <dxc:ValueDataMember Type="High" Member="High"/>
+                        <dxc:ValueDataMember Type="Low" Member="Low"/>
+                        <dxc:ValueDataMember Type="Close" Member="Close"/>
+                    </dxc:SeriesDataAdapter>
+                </dxc:CandleStickSeries.Data>
+                <dxc:CandleStickSeries.HintOptions>
+                    <dxc:SeriesCrosshairOptions>
+                        <dxc:SeriesCrosshairOptions.PointTextPattern>
+Open: ${O$0.00}
+High: ${H$0.00}
+Low: ${L$0.00}
+Close: ${C$0.00}
+                        </dxc:SeriesCrosshairOptions.PointTextPattern>    
+                    </dxc:SeriesCrosshairOptions>
+                </dxc:CandleStickSeries.HintOptions>
+                <dxc:CandleStickSeries.Style>
+                    <dxc:CandleStickSeriesStyle
+                        RisingFill="{StaticResource RisingValueColor}"
+                        RisingStroke="{StaticResource RisingValueColor}"
+                        FallingFill="{StaticResource FallingValueColor}"
+                        FallingStroke="{StaticResource FallingValueColor}"/>
+                </dxc:CandleStickSeries.Style>
+            </dxc:CandleStickSeries>            
+            <dxc:AreaSeries
+                Visible="{Binding IsCloseOnlyShown}">
+                <dxc:AreaSeries.Data>
+                    <dxc:SeriesDataAdapter
+                        DataSource="{Binding Content}"
+                        ArgumentDataMember="Timestamp">
+                        <dxc:ValueDataMember Type="Value" Member="Close"/>
+                    </dxc:SeriesDataAdapter>
+                </dxc:AreaSeries.Data>
+                <dxc:AreaSeries.HintOptions>
+                    <dxc:SeriesCrosshairOptions PointTextPattern="Close: ${V$0.00}"/>
+                </dxc:AreaSeries.HintOptions>
+                <dxc:AreaSeries.Style>
+                    <dxc:AreaSeriesStyle
+                        Stroke="{StaticResource RisingValueColor}"
+                        Fill="{StaticResource RisingValueColor}"
+                        Alpha="0.3"/>
+                </dxc:AreaSeries.Style>
+            </dxc:AreaSeries>
+            <dxc:BarSeries>
+                <dxc:BarSeries.Data>
+                    <dxc:SeriesDataAdapter
+                        DataSource="{Binding Content}"
+                        ArgumentDataMember="Timestamp">
+                        <dxc:ValueDataMember Type="Value" Member="Volume"/>
+                    </dxc:SeriesDataAdapter>
+                </dxc:BarSeries.Data>
+                <dxc:BarSeries.AxisY>
+                    <dxc:NumericAxisY
+                        Position="Far"
+                        AutoRangeMode="VisibleValues">
+                        <dxc:NumericAxisY.Layout>
+                            <dxc:AxisLayout Anchor1="0.0" Anchor2="0.333" />
+                        </dxc:NumericAxisY.Layout>
+                        <dxc:NumericAxisY.LabelTextFormatter>
+                            <views:VolumeLabelTextFormatter/>
+                        </dxc:NumericAxisY.LabelTextFormatter>
+                        <dxc:NumericAxisY.Label>
+                            <dxc:AxisLabel Position="Inside">
+                                <dxc:AxisLabel.Style>
+                                    <dxc:AxisLabelStyle>
+                                        <dxc:AxisLabelStyle.TextStyle>
+                                            <dxc:TextStyle Color="{StaticResource TextColor}"/>
+                                        </dxc:AxisLabelStyle.TextStyle>
+                                    </dxc:AxisLabelStyle>
+                                </dxc:AxisLabel.Style>
+                            </dxc:AxisLabel>
+                        </dxc:NumericAxisY.Label>
+                        <dxc:NumericAxisY.Style>
+                            <dxc:AxisStyle
+                                LineVisible="False"
+                                MajorGridlinesVisible="True"
+                                MajorGridlinesColor="{StaticResource SeparatorColor}"/>
+                        </dxc:NumericAxisY.Style>
+                    </dxc:NumericAxisY>
+                </dxc:BarSeries.AxisY>
+                <dxc:BarSeries.HintOptions>
+                    <dxc:SeriesCrosshairOptions PointTextPattern="Volume: {V$#}"/>
+                </dxc:BarSeries.HintOptions>
+                <dxc:BarSeries.Style>
+                    <dxc:BarSeriesStyle
+                        Fill="{StaticResource SymbolDetailPage_VolumeChartColor}"
+                        Stroke="{StaticResource SymbolDetailPage_VolumeChartColor}"/>
+                </dxc:BarSeries.Style>
+            </dxc:BarSeries>
+        </dxc:ChartView.Series>
+        <dxc:ChartView.Hint>
+            <dxc:Hint>
+                <dxc:Hint.Behavior>
+                    <dxc:CrosshairHintBehavior
+                        ArgumentLineVisible="True"
+                        ArgumentLabelVisible="False"
+                        ValueLineVisible="True"
+                        ValueLabelVisible="False"/>
+                </dxc:Hint.Behavior>
+            </dxc:Hint>
+        </dxc:ChartView.Hint>
+        <dxc:ChartView.ChartStyle>
+            <dxc:ChartStyle
+                BackgroundColor="{StaticResource BackgroundColor}">
+                <dxc:ChartStyle.Padding>
+                    <dxc:Padding Left="8" Right="8"/>
+                </dxc:ChartStyle.Padding>
+            </dxc:ChartStyle>
+        </dxc:ChartView.ChartStyle>
+    </dxc:ChartView>
+</ContentView>
