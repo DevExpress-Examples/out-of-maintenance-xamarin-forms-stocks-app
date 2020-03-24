@@ -25,7 +25,6 @@
     <NuGetPackageImportStamp></NuGetPackageImportStamp>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
     <AndroidDexTool>d8</AndroidDexTool>
-    <AndroidLinkTool>r8</AndroidLinkTool>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>
