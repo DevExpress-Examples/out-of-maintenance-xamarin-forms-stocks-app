@@ -5,7 +5,7 @@
     xmlns:views="clr-namespace:Stocks.UI.Views"
     xmlns:viewModels="clr-namespace:Stocks.ViewModels;assembly=Stocks.ViewModels"
     xmlns:converters="clr-namespace:Stocks.UI.Converters"
-    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.Editors;assembly=DevExpress.XamarinForms.DemoEditors"
+    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.DemoEditors;assembly=DevExpress.XamarinForms.DemoEditors"
     x:Class="Stocks.UI.Views.SymbolRow"
     x:DataType="viewModels:ListSymbolWrapper"
     ChangeType="{Binding ChangeType}">

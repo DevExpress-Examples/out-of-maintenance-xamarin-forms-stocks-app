@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
+using Xamarin.Forms.Xaml;
 
 [assembly: AssemblyTitle("DevExpress.XamarinForms.Stocks")]
 [assembly: AssemblyProduct("DevExpress.XamarinForms.Stocks")]
@@ -17,3 +18,4 @@ using System.Runtime.InteropServices;
 
 [assembly: ComVisible(false)]
 [assembly: System.Resources.NeutralResourcesLanguage("en-US")]
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]

@@ -1,5 +1,5 @@
 ﻿using Xamarin.Forms;
-using DevExpress.XamarinForms.Editors;
+using DevExpress.XamarinForms.DemoEditors;
 
 namespace Stocks.UI.Views {
 	public class BarIconItem : ContentButton {

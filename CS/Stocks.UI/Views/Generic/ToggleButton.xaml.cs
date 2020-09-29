@@ -1,6 +1,6 @@
 ﻿using System;
-using DevExpress.XamarinForms.Editors;
 using Xamarin.Forms;
+using DevExpress.XamarinForms.DemoEditors;
 
 namespace Stocks.UI.Views {
     public partial class ToggleButton : ContentButton {

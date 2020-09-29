@@ -208,6 +208,7 @@ ClientBin/
 *.pfx
 *.publishsettings
 orleans.codegen.cs
+.DS_Store
 
 # Since there are multiple workflows, uncomment next line to ignore bower_components
 # (https://github.com/github/gitignore/pull/1529#issuecomment-104372622)

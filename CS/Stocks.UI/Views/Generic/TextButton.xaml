@@ -2,7 +2,7 @@
 <dxe:ContentButton
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.Editors;assembly=DevExpress.XamarinForms.DemoEditors"
+    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.DemoEditors;assembly=DevExpress.XamarinForms.DemoEditors"
     x:Class="Stocks.UI.Views.TextButton">
     <Label
         x:Name="innerLabel"

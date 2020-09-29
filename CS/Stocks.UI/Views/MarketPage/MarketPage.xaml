@@ -47,6 +47,11 @@
                         GroupImageSource="{Binding Text, Source={x:Reference groupRow}, Converter={converters:ToFilenameConverter}}"/>
                 </DataTemplate>
             </dxg:DataGridView.GroupRowTemplate>
+            <dxg:DataGridView.GroupRowStyle>
+                <dxg:GroupRowStyle
+                    Padding="0"
+                    BackgroundColor="{DynamicResource GroupBackgroundColor}"/>
+            </dxg:DataGridView.GroupRowStyle>
             <dxg:DataGridView.Columns>
                 <dxg:PickerColumn
                     FieldName="ListType"

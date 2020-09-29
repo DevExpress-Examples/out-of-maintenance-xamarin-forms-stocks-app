@@ -3,7 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.Editors;assembly=DevExpress.XamarinForms.DemoEditors"
+    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.DemoEditors;assembly=DevExpress.XamarinForms.DemoEditors"
     xmlns:dxg="clr-namespace:DevExpress.XamarinForms.DataGrid;assembly=DevExpress.XamarinForms.Grid"
     xmlns:views="clr-namespace:Stocks.UI.Views"
     x:Class="Stocks.UI.Themes.SharedStyles">
@@ -270,7 +270,7 @@
     </Style>
 
     <Style x:Key="BarIconItemStyle" TargetType="views:BarIconItem">
-        <Setter Property="VisualStateManager.VisualStateGroups">
+        <!--<Setter Property="VisualStateManager.VisualStateGroups">
             <Setter.Value>
                 <VisualStateGroupList>
                     <VisualStateGroup Name="BarIconItem">
@@ -287,6 +287,6 @@
                     </VisualStateGroup>
                 </VisualStateGroupList>
             </Setter.Value>
-        </Setter>
+        </Setter>-->
     </Style>
 </ResourceDictionary>

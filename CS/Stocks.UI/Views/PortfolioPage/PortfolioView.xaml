@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:Stocks.UI.Views"
     xmlns:utils="clr-namespace:Stocks.UI.Utils"
-    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.Editors;assembly=DevExpress.XamarinForms.DemoEditors"
+    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.DemoEditors;assembly=DevExpress.XamarinForms.DemoEditors"
     xmlns:dxg="clr-namespace:DevExpress.XamarinForms.DataGrid;assembly=DevExpress.XamarinForms.Grid"
     xmlns:dxn="clr-namespace:DevExpress.XamarinForms.Navigation;assembly=DevExpress.XamarinForms.Navigation"
     xmlns:converters="clr-namespace:Stocks.UI.Converters"

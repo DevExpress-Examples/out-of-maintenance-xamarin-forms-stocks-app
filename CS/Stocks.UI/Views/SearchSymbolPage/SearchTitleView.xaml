@@ -2,7 +2,7 @@
 <ContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.Editors;assembly=DevExpress.XamarinForms.DemoEditors"
+    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.DemoEditors;assembly=DevExpress.XamarinForms.DemoEditors"
     xmlns:converters="clr-namespace:Stocks.UI.Converters"
     xmlns:views="clr-namespace:Stocks.UI.Views"
     xmlns:themes="clr-namespace:Stocks.UI.Themes"

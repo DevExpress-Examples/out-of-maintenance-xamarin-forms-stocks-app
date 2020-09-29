@@ -2,10 +2,9 @@
 <ContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.Editors;assembly=DevExpress.XamarinForms.DemoEditors"
+    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.DemoEditors;assembly=DevExpress.XamarinForms.DemoEditors"
     x:Class="Stocks.UI.Views.SymbolGroupRow"
     x:Name="self"
-    BackgroundColor="{DynamicResource GroupBackgroundColor}"
     HeightRequest="56"
     Margin="0,-1,0,0">
     <!-- The negative margin here is a hack to hide the separator of a last item in a group. -->

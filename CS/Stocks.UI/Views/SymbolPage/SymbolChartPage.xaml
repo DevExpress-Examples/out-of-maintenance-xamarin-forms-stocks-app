@@ -6,7 +6,7 @@
     xmlns:views="clr-namespace:Stocks.UI.Views"
     xmlns:viewModels="clr-namespace:Stocks.ViewModels;assembly=Stocks.ViewModels"
     xmlns:themes="clr-namespace:Stocks.UI.Themes"
-    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.Editors;assembly=DevExpress.XamarinForms.DemoEditors"
+    xmlns:dxe="clr-namespace:DevExpress.XamarinForms.DemoEditors;assembly=DevExpress.XamarinForms.DemoEditors"
     x:Class="Stocks.UI.Views.SymbolChartPage"
     ios:Page.UseSafeArea="True"
     BackgroundColor="{DynamicResource BackgroundColor}"

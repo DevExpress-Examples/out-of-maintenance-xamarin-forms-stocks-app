@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="2" android:versionName="2.0" package="com.devexpress.stocks">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:versionCode="2" android:versionName="2.0" package="com.devexpress.stocks">
 	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="29" />
-	<application android:label="DevExpress Stocks"></application>
+	<application android:label="DevExpress Stocks" tools:replace="android:label,android:icon"></application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
 </manifest>

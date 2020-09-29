@@ -2,7 +2,7 @@
 using Unity;
 using Xamarin.Forms;
 using DevExpress.XamarinForms.Core.Themes;
-using DevExpress.XamarinForms.Editors;
+using DevExpress.XamarinForms.DemoEditors;
 using Stocks.Models;
 using Stocks.Services;
 using Stocks.UI.Services;
@@ -10,8 +10,6 @@ using Stocks.UI.Views;
 using Stocks.ViewModels;
 using Xamarin.Forms.Xaml;
 using Mocks = Stocks.UI.Services.Mocks;
-
-[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
 namespace Stocks.UI {
     public partial class App : Application {

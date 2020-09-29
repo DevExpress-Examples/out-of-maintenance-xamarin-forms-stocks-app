@@ -19,7 +19,7 @@ namespace Stocks.UI.iOS {
             DevExpress.XamarinForms.Charts.Chart.Init();
             DevExpress.XamarinForms.Navigation.Navigation.Init();
             DevExpress.XamarinForms.DataGrid.DataGrid.Init();
-            DevExpress.XamarinForms.Editors.Editors.Init();
+            DevExpress.XamarinForms.DemoEditors.Editors.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

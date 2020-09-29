@@ -1,4 +1,4 @@
-﻿using DevExpress.XamarinForms.Editors;
+﻿using DevExpress.XamarinForms.DemoEditors;
 
 namespace Stocks.UI.Utils {
     public static class TextEditUtils {
