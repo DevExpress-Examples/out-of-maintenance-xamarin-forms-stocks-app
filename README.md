@@ -37,8 +37,6 @@ This application uses the following DevExpress Xamarin.Forms controls:
 - [DataGridView](https://docs.devexpress.com/MobileControls/DevExpress.XamarinForms.DataGrid.DataGridView) - displays information on app pages. The following grid features are used: [template column](https://docs.devexpress.com/MobileControls/DevExpress.XamarinForms.DataGrid.TemplateColumn), data [sorting](https://docs.devexpress.com/MobileControls/400552/xamarin-forms/data-grid/getting-started/lesson-5-sort-data) and [grouping](https://docs.devexpress.com/MobileControls/400550/xamarin-forms/data-grid/getting-started/lesson-3-group-data), and [swipe actions](https://docs.devexpress.com/MobileControls/401053/xamarin-forms/data-grid/examples/swipe-actions). 
 - [Charts](http://docs.devexpress.com/MobileControls/400422/xamarin-forms/charts/index) - visualize financial data as Open-High-Low-Close series, bars, lines, donuts, etc.
 
-![DevExpress Mobile UI for Xamarin.Forms](./Images/demo-center.png)
-
 ### Documentation
 
 - [Data Grid](http://docs.devexpress.com/MobileControls/400543/xamarin-forms/data-grid/index)
