@@ -37,6 +37,14 @@ This application uses the following DevExpress Xamarin.Forms controls:
 - [DataGridView](https://docs.devexpress.com/MobileControls/DevExpress.XamarinForms.DataGrid.DataGridView) - displays information on app pages. The following grid features are used: [template column](https://docs.devexpress.com/MobileControls/DevExpress.XamarinForms.DataGrid.TemplateColumn), data [sorting](https://docs.devexpress.com/MobileControls/400552/xamarin-forms/data-grid/getting-started/lesson-5-sort-data) and [grouping](https://docs.devexpress.com/MobileControls/400550/xamarin-forms/data-grid/getting-started/lesson-3-group-data), and [swipe actions](https://docs.devexpress.com/MobileControls/401053/xamarin-forms/data-grid/examples/swipe-actions). 
 - [ChartView](https://docs.devexpress.com/MobileControls/DevExpress.XamarinForms.Charts.ChartView) - visualizes financial data as Open-High-Low-Close series and bars.
 
+
+### Blog
+
+- [Xamarin.Forms UI Controls - Porting our Mobile Stock Market App to the Xamarin Platform (Part 1)](https://community.devexpress.com/blogs/mobile/archive/2019/09/19/xamarin-forms-ui-controls-porting-our-mobile-stock-market-app-to-the-xamarin-platform-part-1.aspx)
+- [Xamarin.Forms UI Controls - Porting our Mobile Stock Market App to the Xamarin Platform (Part 2)](https://community.devexpress.com/blogs/mobile/archive/2019/10/24/xamarin-forms-ui-controls-porting-our-mobile-stock-market-app-to-the-xamarin-platform-part-2.aspx)
+- [Xamarin.Forms UI Controls - Porting our Mobile Stock Market App to the Xamarin Platform (Part 3)](https://community.devexpress.com/blogs/mobile/archive/2019/12/16/xamarin-forms-ui-controls-porting-our-mobile-stock-market-app-to-the-xamarin-platform-part-3.aspx)
+- [Xamarin.Forms UI Controls - Porting our Mobile Stock Market App to the Xamarin Platform (Part 4)](https://community.devexpress.com/blogs/mobile/archive/2020/03/16/xamarin-forms-ui-controls-porting-our-mobile-stock-market-app-to-the-xamarin-platform-part-4.aspx)
+
 ### Documentation
 
 - [Data Grid](http://docs.devexpress.com/MobileControls/400543/xamarin-forms/data-grid/index)
