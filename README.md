@@ -33,7 +33,7 @@ The application contains the following pages:
 This application uses the following DevExpress Xamarin.Forms controls:
 
 - [DrawerPage](https://docs.devexpress.com/MobileControls/DevExpress.XamarinForms.Navigation.DrawerPage) - implements navigation in the application.
-- [TabPage](https://docs.devexpress.com/MobileControls/DevExpress.XamarinForms.Navigation.TabPage) and [TabView](https://docs.devexpress.com/MobileControls/DevExpress.XamarinForms.Navigation.TabView) - implements navigation between views within a page.
+- [TabPage](https://docs.devexpress.com/MobileControls/DevExpress.XamarinForms.Navigation.TabPage) and [TabView](https://docs.devexpress.com/MobileControls/DevExpress.XamarinForms.Navigation.TabView) - implement navigation between pages and within a page.
 - [DataGridView](https://docs.devexpress.com/MobileControls/DevExpress.XamarinForms.DataGrid.DataGridView) - displays information on app pages. The following grid features are used: [template column](https://docs.devexpress.com/MobileControls/DevExpress.XamarinForms.DataGrid.TemplateColumn), data [sorting](https://docs.devexpress.com/MobileControls/400552/xamarin-forms/data-grid/getting-started/lesson-5-sort-data) and [grouping](https://docs.devexpress.com/MobileControls/400550/xamarin-forms/data-grid/getting-started/lesson-3-group-data), and [swipe actions](https://docs.devexpress.com/MobileControls/401053/xamarin-forms/data-grid/examples/swipe-actions). 
 - [ChartView](https://docs.devexpress.com/MobileControls/DevExpress.XamarinForms.Charts.ChartView) - visualizes financial data as Open-High-Low-Close series and bars.
 
