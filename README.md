@@ -49,7 +49,7 @@ This application uses the following DevExpress Xamarin.Forms controls:
 
 ### More Examples
 
-* [Stocks App](https://github.com/DevExpress-Examples/xamarin-forms-stocks-app)
+* [Demo Center](https://github.com/DevExpress-Examples/xamarin-forms-demo-app)
 * [Data Grid](https://github.com/DevExpress-Examples/xamarin-forms-data-grid-examples)
 * [Charts](https://github.com/DevExpress-Examples/xamarin-forms-chart-examples)
 * [Scheduler](https://github.com/DevExpress-Examples/xamarin-forms-scheduler-examples)
