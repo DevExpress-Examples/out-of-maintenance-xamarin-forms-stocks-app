@@ -1,5 +1,0 @@
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false"
-          android:color="?attr/colorButtonNormal" />
-    <item android:color="@color/btn_positive_button_bar_background_color" />
-</selector>

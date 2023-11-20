@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:app="http://schemas.android.com/apk/res-auto">
-    <style name="MainTheme" parent="V26.Base.MainTheme">
-        <item name="android:windowSplashscreenContent">@drawable/splash_screen_land</item>
-    </style>
-</resources>
